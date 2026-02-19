@@ -7,7 +7,7 @@ export default function RecentNote({task,setTask}){
         
     }
     return (
-        <div className="h-screen w-full md:w-1/2">
+        <div className="h-screen w-full md:w-1/2 p-2">
             <h1>Recent Notes</h1>
             <div>
                 <div className="flex flex-wrap items-start justify-start gap-5 mt-6 h-[90%] overflow-auto">

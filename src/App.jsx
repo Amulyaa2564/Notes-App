@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import AddNote from "./addNote";
 import RecentNote from "./recentNote";
 
 function App(){
   const [title,setTitle]=useState('');
   const [content,setContent]=useState('');
-
-  const[task,setTask]=useState([])
-
-  
+  const[task,setTask]=useState(()=>{
+  const savedNotes = localStorage.getItem("notes");
+  return savedNotes ? JSON.parse(savedNotes) : [];
+  })
 
     const submitHandler=(e)=>{
       e.preventDefault()
@@ -19,6 +19,9 @@ function App(){
       setContent('')
 
     }
+  useEffect(()=>{
+    localStorage.setItem("notes",JSON.stringify(task))
+  },[task])  
     return(
       <form onSubmit={(e)=>{
         submitHandler(e)
